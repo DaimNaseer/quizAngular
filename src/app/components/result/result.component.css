@@ -1,0 +1,61 @@
+section.final-result-container {
+    background: linear-gradient(to bottom right,rgba(0, 0, 0, .35), rgba(0, 0, 0, .50)), url("/assets/images/final-bg.jpg") no-repeat fixed center;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    height: 90vh;
+    width: 95%;
+    margin: 5vh 2.5%;
+    position: relative;
+    box-shadow: 0px 10px 25px #aaa;
+    background-size: cover;
+    border-radius: 3px;
+    animation: fade .8s;
+}
+
+div.final-result-wrapper {
+    height: 90vh;
+    width: 90%;
+    margin: 5vh 5%;
+    position: relative;
+}
+
+div.final-result {
+    width: 70%;
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .65);
+    border-radius: 3px;
+    overflow: auto;
+}
+
+h2#final-score-text {
+    width: 80%;
+    text-align: center;
+    margin: 230px auto 0 auto;
+    font-size: 25px;
+    color: #eee;
+}
+
+button#final-logout-btn {
+    font-family: 'Cabin', sans-serif;
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px;
+    float: right;
+    border-radius: 25px;
+    width: 110px;
+    letter-spacing: 1.5px;
+    color: #eee;
+    background: #222;
+    outline: none;
+    border: 1px solid #ccc;
+    transition: all .3s;
+}
+
+button#final-logout-btn:hover {
+    border: 1px solid #fff;
+    background: #555;
+}

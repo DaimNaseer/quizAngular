@@ -1,0 +1,91 @@
+<section class="admin-panel-container" >
+      
+    <div class='admin-panel-wrapper'>
+     <div class="header">
+      <h2>Add Questions</h2>
+      <a routerLink="/"><button id="admin-logout-btn">Logout</button></a>
+     </div>
+      
+      <div class="forms-wrapper">
+       <button
+          mwlConfirmationPopover
+          [popoverTitle]="popoverTitle"
+          [popoverMessage]="popoverMessage"
+          placement="right"
+          (confirm)="deleteQuestion()"
+          id="question-delete-btn" 
+          #deleteBtn
+        >Delete</button>
+       
+       <textarea (click)="newQuestion()" [(ngModel)]="questionText" id="new-question-text" cols="" rows="" placeholder="New Question"></textarea>
+       <div class="admin-options-container">
+        <div class="admin-option-wrapper">
+            <input (click)="correctAns($event)" [disabled]="disableOptions" type="radio" class="0" name="answer" value="0" #radioBtn>
+            <input [(ngModel)]="opt1" type="text" [disabled]="disableOptions" class="admin-option admin-option-0" value="" #input>
+        </div>
+          <div class="admin-option-wrapper">
+               <input (click)="correctAns($event)" [disabled]="disableOptions" type="radio" class="1" name="answer" value="0" #radioBtn>
+               <input [(ngModel)]="opt2" type="text" [disabled]="disableOptions" class="admin-option admin-option-1" value="" #input>
+           </div>
+           <div class="admin-option-wrapper">
+            <input (click)="correctAns($event)" [disabled]="disableOptions" type="radio" class="2" name="answer" value="0" #radioBtn>
+            <input [(ngModel)]="opt3" type="text" [disabled]="disableOptions" class="admin-option admin-option-2" value="" #input>
+        </div>
+        <div class="admin-option-wrapper">
+            <input (click)="correctAns($event)" [disabled]="disableOptions"  type="radio" class="3" name="answer" value="0" #radioBtn>
+            <input [(ngModel)]="opt4" type="text" [disabled]="disableOptions" class="admin-option admin-option-3" value="" #input>
+        </div>
+       </div>
+       
+       <button (click)="insertQuestion()" id="question-insert-btn">Insert</button>
+      </div>
+       
+     <button
+        id="questions-clear-btn"
+        mwlConfirmationPopover
+        [popoverTitle]="popoverTitle"
+        [popoverMessage]="popoverMessage"
+        placement="left"
+        (confirm)="clearList()"
+     >Clear List</button>
+
+    </div>
+    
+    <div class="results-list-container">
+      <div class="clear">
+       <h2>Results</h2>
+          <button
+            id="results-clear-btn"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            placement="left"
+            (confirm)="clearResults()"
+          >Clear Results</button>
+      </div>
+       <div *ngFor="let user of usersDB; let i=index;" class="results-list-wrapper">
+        <p class="person person-{{i+1}}">
+            <span class="person-{{i+1}}">
+                {{user.firstname + ' ' + user.lastname}} - {{user.score}} Points
+            </span>
+            <button
+             mwlConfirmationPopover
+             [popoverTitle]="popoverTitle"
+             [popoverMessage]="popoverMessage"
+             placement="left"
+             (confirm)="deleteResult(i)"             
+             class="delete-result-btn"            
+             >
+             Delete
+            </button>
+        </p>
+       </div>
+    </div>
+    
+    <div class="inserted-questions-wrapper">
+        <div *ngFor="let question of quests;  let i=index;">
+          <p><span>{{i+1}}. {{question.qText}}</span><button id="question-{{i+1}}" (click)="editQuestion($event,i)">Edit</button></p>
+        </div>
+    </div>
+    
+</section>

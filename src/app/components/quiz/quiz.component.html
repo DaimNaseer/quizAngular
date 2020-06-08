@@ -1,0 +1,30 @@
+
+<section class="quiz-container">
+    <div class="quiz-wrapper">
+        
+        <h2 id="asked-question-text">{{questions[counter].qText}}</h2>
+        <div class="instant-answer-container"
+         *ngIf="showMessage" 
+         [ngClass]="{'correct':correctAnswer, 'warning':wrongAnswer}">
+         <img id="emotion" [src]=showSmiley()>
+        <div id="instant-answer-wrapper">
+            <p id="instant-answer-text">{{message}}</p>
+            <button id="next-question-btn" (click)="nextQuestion($event)">{{btnText}}</button>
+        </div>
+        </div>
+        
+        <div (click)="optionClicked($event)" class="quiz-options-wrapper" [ngClass]="{'disable':disableOptions}">
+            <div class="choice-0"><span class="choice-0">A</span><p  class="choice-0">{{questions[counter].options[0]}}</p></div>
+            <div class="choice-1"><span class="choice-1">B</span><p  class="choice-1">{{questions[counter].options[1]}}</p></div>
+            <div class="choice-2"><span class="choice-2">C</span><p  class="choice-2">{{questions[counter].options[2]}}</p></div>
+            <div class="choice-3"><span class="choice-3">D</span><p  class="choice-3">{{questions[counter].options[3]}}</p></div>
+        </div>
+        
+    </div>
+   
+
+    <div class="progressBar">
+        <p id="progress">{{counter+1}}/{{questions.length}}</p>
+        <progress value={{counter+1}} max={{questions.length}}></progress>
+    </div>
+   </section>
